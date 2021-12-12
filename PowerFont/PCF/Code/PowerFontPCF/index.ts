@@ -6,6 +6,7 @@ export class PowerFontPCF implements ComponentFramework.StandardControl<IInputs,
   private _fontSize: number;
 
   private labelElement: HTMLLabelElement;
+  private linkElement: HTMLLinkElement;
 
   /**
    * Empty constructor.
@@ -30,20 +31,20 @@ export class PowerFontPCF implements ComponentFramework.StandardControl<IInputs,
     this._container = document.createElement("div");
     // HTML label element that shows the styled text
     this.labelElement = document.createElement("label");
-    this.labelElement.innerHTML = context.parameters.text.formatted ? context.parameters.text.formatted : "PowerFont sample";
+    this.labelElement.innerHTML = context.parameters.sampleText?.raw || "";
     this.labelElement.setAttribute("style", "font-family: 'Raleway', cursive; font-size: 20px");
     this._container.appendChild(this.labelElement);
 
     container.appendChild(this._container);
 
     // Create the request for the font on Google - Raleway by default
-    var link = document.createElement("link");
-    link.id = "PowerFontUrl";
-    link.rel = "stylesheet";
-    link.href = `https://fonts.googleapis.com/css?family=Raleway&display=swap`;
+    this.linkElement = document.createElement("link");
+    //link.id = "PowerFontUrl";
+    this.linkElement.rel = "stylesheet";
+    this.linkElement.href = `https://fonts.googleapis.com/css?family=Raleway&display=swap`;
 
     // Add the request on the head of the document
-    document.getElementsByTagName("head")[0].appendChild(link);
+    document.getElementsByTagName("head")[0].appendChild(this.linkElement);
   }
 
   /**
@@ -52,11 +53,11 @@ export class PowerFontPCF implements ComponentFramework.StandardControl<IInputs,
    */
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
-    this._fontName = context.parameters.fontName.formatted ? context.parameters.fontName.formatted : "Raleway";
-    this._fontSize = context.parameters.fontSize.raw ? context.parameters.fontSize.raw : 20;
+    this._fontName = context.parameters.fontName?.raw || "Raleway";
+    this._fontSize = context.parameters.fontSize?.raw || 20;
 
     // val is the default when debugging
-    if (this._fontName.length > 0 && this._fontName != "val") {
+    if (this._fontName.length > 0) {
       
       // Title case thanks to: https://www.freecodecamp.org/news/three-ways-to-title-case-a-sentence-in-javascript-676a9175eb27/
       this._fontName = this._fontName
@@ -68,14 +69,16 @@ export class PowerFontPCF implements ComponentFramework.StandardControl<IInputs,
         .join("+");
 
       // We get the previously created link element
-      var link = <HTMLLinkElement>document.getElementById("PowerFontUrl");
-      link.href = `https://fonts.googleapis.com/css?family=${this._fontName}&display=swap`;
+      //var link = <HTMLLinkElement>document.getElementById("PowerFontUrl");
+      this.linkElement.href = `https://fonts.googleapis.com/css?family=${this._fontName}&display=swap`;
 
+      // Update label text
+      this.labelElement.innerHTML = context.parameters.sampleText?.raw || "";
       // Set the style for the updated font
       this.labelElement.setAttribute(
         "style",
         `font-family: '${this._fontName.replace("+", " ")}', cursive; font-size: ${this._fontSize}px`
-      );
+      );      
     }
   }
 
