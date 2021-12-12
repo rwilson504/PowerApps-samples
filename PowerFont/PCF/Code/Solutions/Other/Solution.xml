@@ -2,21 +2,21 @@
 <ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <!-- Unique Name of Cds Solution-->
-    <UniqueName>PowerFontPCF</UniqueName>
+    <UniqueName>RAWPowerFontPCF</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="PowerFontPCF" languagecode="1033" />
+      <LocalizedName description="RAW! PowerFontPCF" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0</Version>
+    <Version>1.0.6</Version>
     <!-- Solution Package Type: Unmanaged(0)/Managed(1)/Both(2)-->
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
-      <UniqueName>PowerNimbus</UniqueName>
+      <UniqueName>RAW</UniqueName>
       <LocalizedNames>
         <!-- Localized Cds Publisher Name in language code-->
-        <LocalizedName description="PowerNimbus" languagecode="1033" />
+        <LocalizedName description="RAW" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
@@ -25,7 +25,7 @@
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
-      <CustomizationPrefix>dev</CustomizationPrefix>
+      <CustomizationPrefix>raw</CustomizationPrefix>
       <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
       <CustomizationOptionValuePrefix>29305</CustomizationOptionValuePrefix>
       <Addresses>
